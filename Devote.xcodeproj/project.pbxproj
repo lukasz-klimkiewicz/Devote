@@ -17,6 +17,7 @@
 		AAFC450F26F5B6B70098F1E9 /* sound-ding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AAFC450C26F5B6B70098F1E9 /* sound-ding.mp3 */; };
 		AAFC451026F5B6B70098F1E9 /* sound-rise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AAFC450D26F5B6B70098F1E9 /* sound-rise.mp3 */; };
 		AAFC451C26F6548A0098F1E9 /* Constant.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFC451B26F6548A0098F1E9 /* Constant.swift.swift */; };
+		AAFC451E26F672CC0098F1E9 /* HideKeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFC451D26F672CC0098F1E9 /* HideKeyboardExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		AAFC450C26F5B6B70098F1E9 /* sound-ding.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sound-ding.mp3"; sourceTree = "<group>"; };
 		AAFC450D26F5B6B70098F1E9 /* sound-rise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sound-rise.mp3"; sourceTree = "<group>"; };
 		AAFC451B26F6548A0098F1E9 /* Constant.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift.swift; sourceTree = "<group>"; };
+		AAFC451D26F672CC0098F1E9 /* HideKeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		AAFC451326F5B6F30098F1E9 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				AAFC451D26F672CC0098F1E9 /* HideKeyboardExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 			files = (
 				AAFC450126F53A4C0098F1E9 /* Persistence.swift in Sources */,
 				AAFC44FA26F53A4B0098F1E9 /* ContentView.swift in Sources */,
+				AAFC451E26F672CC0098F1E9 /* HideKeyboardExtension.swift in Sources */,
 				AAFC450426F53A4C0098F1E9 /* Devote.xcdatamodeld in Sources */,
 				AAFC44F826F53A4B0098F1E9 /* DevoteApp.swift in Sources */,
 				AAFC451C26F6548A0098F1E9 /* Constant.swift.swift in Sources */,

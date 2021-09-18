@@ -14,6 +14,11 @@ struct ContentView: View {
     
     @State var task : String = ""
     
+    private var isButtonDisabled : Bool {
+        task.isEmpty
+    }
+    
+    
     // MARK: - FETCHING DATA
     
     
@@ -31,11 +36,19 @@ struct ContentView: View {
     
     private func addItem() {
         withAnimation {
+            
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
+            newItem.task = task
+            newItem.completion = false
+            newItem.id = UUID()
 
             do {
+                
                 try viewContext.save()
+                task = ""
+                hideKeyboard()
+                
             } catch {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
@@ -58,10 +71,24 @@ struct ContentView: View {
                 
                 VStack(spacing: 16) {
                     
-                    TextField("New task", text: $task)
+                    TextField("Co chcesz zrobić?", text: $task)
                         .padding()
                         .background(Color(UIColor.systemGray6))
                         .cornerRadius(10)
+                    
+                    Button(action: {
+                        addItem()
+                    }, label: {
+                        Spacer()
+                        Text("Zapisz")
+                        Spacer()
+                    })
+                    .disabled(isButtonDisabled)
+                    .padding()
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .background(isButtonDisabled ? Color(UIColor.systemGray4) : Color.pink)
+                    .cornerRadius(10)
                     
                 }.padding()
                 
@@ -69,29 +96,32 @@ struct ContentView: View {
                 
                 List {
                     ForEach(items) { item in
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                        
+                        
+                        VStack(alignment: .leading) {
+                            Text(item.task ?? "")
+                                .font(.headline)
+                                .fontWeight(.bold)
+                            Text(item.timestamp!, formatter: itemFormatter)
+                                .font(.footnote)
+                                .foregroundColor(.gray)
+                        }
+                        
+                        
                     }
                     .onDelete(perform: deleteItems)
                 }
                 //: LIST
                 
             } //: VSTACK
+            .navigationBarTitle("Do zrobienia", displayMode: .large)
             .toolbar {
+                
                 #if os(iOS)
-                ToolbarItem(placement: .navigationBarLeading){
-                    
+                ToolbarItem(placement: .navigationBarTrailing){
                     EditButton()
-                    
                 }
                 #endif
-                
-                ToolbarItem(placement: .navigationBarTrailing){
-                    
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                    
-                }
                 
 
         } //: TOOLBAR
