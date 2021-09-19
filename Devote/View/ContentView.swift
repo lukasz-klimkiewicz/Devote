@@ -46,7 +46,25 @@ struct ContentView: View {
                     
                     // MARK: - HEADER
                     
-                    // MARK: - NEW TASK BUTTON
+                    Spacer(minLength: 80)
+            
+                    
+                    Button(action: {
+                        showNewTaskItem = true
+                    }, label: {
+                        Image(systemName: "plus.circle")
+                            .font(.system(size: 30, weight: .semibold, design: .rounded))
+                        Text("Dodaj zadanie")
+                            .font(.system(size: 24, weight: .bold, design: .rounded))
+                    })
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 15)
+                    .background(
+                        LinearGradient(gradient: Gradient(colors: [Color.pink, Color.blue]), startPoint: .leading, endPoint: .trailing)
+                            .clipShape(Capsule())
+                    )
+                    .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.25), radius: 8, x: 0, y: 4)
                     
                     
                     // MARK: - TASKS
@@ -95,6 +113,21 @@ struct ContentView: View {
                 )
                 
                 // MARK: - LIST ITEM
+                
+            // MARK: - NEW TASK BUTTON
+            
+            if showNewTaskItem {
+                    
+                BlankView()
+                    .onTapGesture {
+                        withAnimation {
+                            showNewTaskItem = false
+                        }
+                    }
+                
+                NewTaskItemView(isShowing: $showNewTaskItem)
+                    
+            }
                 
             } //: ZSTACK
             .onAppear(){
