@@ -18,9 +18,7 @@ struct ContentView: View {
         task.isEmpty
     }
     
-    
     // MARK: - FETCHING DATA
-    
     
     
     @Environment(\.managedObjectContext) private var viewContext
@@ -66,66 +64,82 @@ struct ContentView: View {
         
         NavigationView {
             
-            VStack {
-                
-                
-                VStack(spacing: 16) {
+            ZStack {
+                VStack {
                     
-                    TextField("Co chcesz zrobić?", text: $task)
+                    
+                    VStack(spacing: 16) {
+                        
+                        TextField("Co chcesz zrobić?", text: $task)
+                            .padding()
+                            .background(Color(UIColor.systemGray6))
+                            .cornerRadius(10)
+                        
+                        Button(action: {
+                            addItem()
+                        }, label: {
+                            Spacer()
+                            Text("Zapisz")
+                            Spacer()
+                        })
+                        .disabled(isButtonDisabled)
                         .padding()
-                        .background(Color(UIColor.systemGray6))
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .background(isButtonDisabled ? Color(UIColor.systemGray4) : Color.pink)
                         .cornerRadius(10)
-                    
-                    Button(action: {
-                        addItem()
-                    }, label: {
-                        Spacer()
-                        Text("Zapisz")
-                        Spacer()
-                    })
-                    .disabled(isButtonDisabled)
-                    .padding()
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .background(isButtonDisabled ? Color(UIColor.systemGray4) : Color.pink)
-                    .cornerRadius(10)
-                    
-                }.padding()
-                
-                
-                
-                List {
-                    ForEach(items) { item in
                         
-                        
-                        VStack(alignment: .leading) {
-                            Text(item.task ?? "")
-                                .font(.headline)
-                                .fontWeight(.bold)
-                            Text(item.timestamp!, formatter: itemFormatter)
-                                .font(.footnote)
-                                .foregroundColor(.gray)
+                    }.padding()
+                    
+                    
+                    
+                    List {
+                        ForEach(items) { item in
+                            
+                            
+                            VStack(alignment: .leading) {
+                                Text(item.task ?? "")
+                                    .font(.headline)
+                                    .fontWeight(.bold)
+                                Text(item.timestamp!, formatter: itemFormatter)
+                                    .font(.footnote)
+                                    .foregroundColor(.gray)
+                            }
+                            
+                            
                         }
-                        
-                        
+                        .onDelete(perform: deleteItems)
                     }
-                    .onDelete(perform: deleteItems)
-                }
-                //: LIST
-                
-            } //: VSTACK
-            .navigationBarTitle("Do zrobienia", displayMode: .large)
-            .toolbar {
-                
-                #if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing){
-                    EditButton()
-                }
-                #endif
-                
+                    .listStyle(InsetGroupedListStyle())
+                    .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.3), radius: 12)
+                    .padding(.vertical, 0)
+                    .frame(maxWidth: 640)
+                    //: LIST
+                    
+                } //: VSTACK
+                .navigationBarTitle("Do zrobienia", displayMode: .large)
+                .toolbar {
+                    
+                    #if os(iOS)
+                    ToolbarItem(placement: .navigationBarTrailing){
+                        EditButton()
+                    }
+                    #endif
+                    
 
-        } //: TOOLBAR
+            } //: TOOLBAR
+                .background(
+                    backgroundGradient.ignoresSafeArea(.all)
+                )
+            } //: ZSTACK
+            .onAppear(){
+                
+                UITableView.appearance().backgroundColor = UIColor.clear
+                
+            }
+            
         } //: NAVIGATION
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 
 

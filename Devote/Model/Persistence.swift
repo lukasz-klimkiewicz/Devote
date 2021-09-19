@@ -41,15 +41,15 @@ struct PersistenceController {
         
         let viewContent = result.container.viewContext
         
-//        for i in 0 ..< 5 {
-//            
-//            let newItem = Item(context: viewContent)
-//            newItem.timestamp = Date()
-//            newItem.task = "Sample task No\(i)"
-//            newItem.completion = false
-//            newItem.id = UUID()
-//            
-//        }
+        for i in 0 ..< 5 {
+            
+            let newItem = Item(context: viewContent)
+            newItem.timestamp = Date()
+            newItem.task = "Sample task No\(i)"
+            newItem.completion = false
+            newItem.id = UUID()
+            
+        }
         
         do {
             
