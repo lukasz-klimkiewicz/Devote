@@ -13,12 +13,17 @@ struct BackgroundImageView : View {
     
     var body: some View {
         
-        Image("rocket")
-            .antialiased(true)
-            .resizable()
-            .scaledToFill()
-            .ignoresSafeArea(.all)
+//        Image("rocket")
+//            .antialiased(true)
+//            .resizable()
+//            .scaledToFill()
+//            .ignoresSafeArea(.all)
         
+        //LinearGradient(gradient: Gradient(colors: [Color.pink.opacity(0), Color.blue.opacity(0)]), startPoint: .leading, endPoint: .trailing)
+          //  .scaledToFill()
+           // .ignoresSafeArea()
+           
+        return Text("test")
     }
     
 }

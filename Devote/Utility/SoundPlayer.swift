@@ -20,6 +20,10 @@ func playSound(sound: String, type: String) {
             audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
             audioPlayer?.play()
             
+        } catch {
+            
+            print("Could not find file to play")
+            
         }
         
     }
