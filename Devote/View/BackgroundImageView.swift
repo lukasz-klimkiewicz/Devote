@@ -19,11 +19,10 @@ struct BackgroundImageView : View {
 //            .scaledToFill()
 //            .ignoresSafeArea(.all)
         
-        //LinearGradient(gradient: Gradient(colors: [Color.pink.opacity(0), Color.blue.opacity(0)]), startPoint: .leading, endPoint: .trailing)
-          //  .scaledToFill()
-           // .ignoresSafeArea()
+        LinearGradient(gradient: Gradient(colors: [Color.pink.opacity(0), Color.blue.opacity(0)]), startPoint: .leading, endPoint: .trailing)
+            .scaledToFill()
+            .ignoresSafeArea()
            
-        return Text("test")
     }
     
 }

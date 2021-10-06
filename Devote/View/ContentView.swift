@@ -69,6 +69,8 @@ struct ContentView: View {
                             .background(
                                 Capsule().stroke(Color.white, lineWidth: 2)
                             )
+                            
+                            
                     
                         
                         // APPERANCE BUTTON
